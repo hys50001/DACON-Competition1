@@ -39,12 +39,14 @@ OKT 클래스로 토큰화
 #### 결과 
 순위권 밖의 좋지 못한 score를 기록
 
-원인 분석
+#### 원인 분석
 - 전처리 미흡
   - 한글 이외의 문자를 모두 제거하면 문장에 아무것도 남지 않는 경우 존재
   - EDA를 통하여 자주 등장하는 단어를 고려하여 불용어를 지정했어야 하는 아쉬움
-- 문장벡터 생성 과정에서 문장 내의 단어들의 임베딩을 단순 합하여 문장 벡터를 만드는 것의 논리성 부족 '
+- 문장벡터 생성 과정에서 문장 내의 단어들의 임베딩을 단순 합하여 문장 벡터를 만드는 것의 논리성 부족 
+- Pre-Trained Model을 이용하지 않음
 
 ## 모델2. BERT-Extractive-Summarizer
 CONCEPT: [BERT-Extractive-Summarizer](https://github.com/dmmiller612/bert-extractive-summarizer)
+BERT 임베딩 결과에 K-Means Cluster을 적용하여 각 군집의 중심 문장을 선택 
 
