@@ -45,6 +45,6 @@ OKT 클래스로 토큰화
   - EDA를 통하여 자주 등장하는 단어를 고려하여 불용어를 지정했어야 하는 아쉬움
 - 문장벡터 생성 과정에서 문장 내의 단어들의 임베딩을 단순 합하여 문장 벡터를 만드는 것의 논리성 부족 '
 
-## 모델2. BERT
-CONCEPT: 한국어 Glove 모델을 이용하여 문장들을 임베딩 한 뒤, 임베딩 결과로 RANK를 메겨 상위 3개의 문장을 문서의 추출요약으로 선정 
+## 모델2. BERT-Extractive-Summarizer
+CONCEPT: [BERT-Extractive-Summarizer]https://github.com/dmmiller612/bert-extractive-summarizer)
 
