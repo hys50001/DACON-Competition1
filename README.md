@@ -13,25 +13,21 @@ CONCEPT: 한국어 Glove 모델을 이용하여 문장들을 임베딩 한 뒤, 
 
 #### STEP1 : 전처리
 ![image](https://user-images.githubusercontent.com/75110162/103288527-634bee80-4a28-11eb-85fc-a453fb24ca8b.png)
-
 한글 이외의 corpus 제거 
 
 #### STEP2-1 : 토큰화
 ![image](https://user-images.githubusercontent.com/75110162/103288595-8a0a2500-4a28-11eb-98e4-02c9f621d33b.png)
-
 OKT 클래스로 토큰화
 
 #### STEP2-2 : 불용어 제거 
 ![image](https://user-images.githubusercontent.com/75110162/103288741-f1c07000-4a28-11eb-9809-88529cd6a2dc.png)
-
 외부데이터 한국어 불용어 사전을 이용하여 불용어 제거 
 
 #### STEP3 : 임베딩 
 ![image](https://user-images.githubusercontent.com/75110162/103288831-22a0a500-4a29-11eb-8aed-a4df52fa2492.png)
-
 한국어 버전의 Glove 임베딩 import
-![image](https://user-images.githubusercontent.com/75110162/103288904-495edb80-4a29-11eb-87b4-3913180c5551.png)
 
+![image](https://user-images.githubusercontent.com/75110162/103288904-495edb80-4a29-11eb-87b4-3913180c5551.png)
 문장에 존재하는 단어들의 임베딩을 합하여 문장벡터를 만듦
 
 #### SETP4: RANK 
