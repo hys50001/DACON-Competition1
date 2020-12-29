@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/75110162/103287720-9b523200-4a26-11eb-8cf4-b9416009727e.png)
 
-처음 참가해보는 DACON Competiton, 좋은 성적을 거두진 못했지만 기록해보기 
+처음 참가해보는 DACON Competiton, 좋은 성적을 거두진 못했지만 기록해보기
 
 ![image](https://user-images.githubusercontent.com/75110162/103288247-cf7a2280-4a27-11eb-823a-511ea18cb1bd.png)
 
@@ -61,3 +61,12 @@ BERT 임베딩 결과에 K-Means Cluster을 적용하여 각 군집의 중심 �
 
 이 과정에서 SPACY에 한국어 모델이 없어 Mecab 을 이용하였고.. 이 과정에서 난항을 겪었고 해결하는데 엄청 오래 걸렸다.. 
 
+#### 결과 
+20위 까지 순위를 끌어올렸지만 최종적으로는 많은 사람들에게 뒤쳐저 48위까지 떨어지게 되었다
+
+#### 원인 분석
+- Fine Tuning 을 할 수 없었다.
+  -  bert-extractive-summarizer 가 공식적으로는 fine tuning 기능이 없었다
+- 알 수 없는 문장 갯수 오류
+  - 추출을 3개 하도록 지정했지만 1개 또는 2개가 추출되는 경우 발생.. 아마 군집 중심값이 존재하지 않는 문제이지 않을까? Github issue에서도 명쾌한 답변이 존재하지 않았다.
+  
