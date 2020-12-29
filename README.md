@@ -50,6 +50,7 @@ OKT 클래스로 토큰화
 CONCEPT: [BERT-Extractive-Summarizer](https://github.com/dmmiller612/bert-extractive-summarizer)
 
 BERT 임베딩 결과에 K-Means Cluster을 적용하여 각 군집의 중심 문장을 선택 
+
 ![image](https://user-images.githubusercontent.com/75110162/103290600-5087e880-4a2d-11eb-8def-d4fd8e11b713.png)
 
 
