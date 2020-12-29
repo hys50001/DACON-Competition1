@@ -37,8 +37,6 @@ OKT 클래스로 토큰화
 #### SETP4: RANK 
 ![image](https://user-images.githubusercontent.com/75110162/103289040-9e9aed00-4a29-11eb-9dff-48e63ffd5857.png)
 
-문서 내의 문장벡터 간의 Cosine Similarity를 구하여 Similariy Matrix를 만든 후, networkx library를 활용하여 문장들 사이의 RANK를 결정
-
-
+문서 내의 문장벡터 간의 Cosine Similarity를 구하여 Similariy Matrix를 만든 후, networkx library를 활용하여 문장들 사이의 RANK 결정 (문장들의 임베딩을 기반으로 인접행렬 구성 후 그래프로 표현, 이 후 그래프의 edge weight를 이용하여 각 문장의 score 결정) 
 
 
