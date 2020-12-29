@@ -4,7 +4,7 @@
 
 처음 참가해보는 DACON Competiton, 좋은 성적을 거두진 못했지만 기록해보기 
 
-#적용모델 1. TextRANK
+# 적용모델1. TextRANK
 
 
 
