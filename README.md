@@ -11,7 +11,9 @@ article_original 에서 3개의 extractive 문장 선택
 ## 모델1. TextRANK
 CONCEPT: 한국어 Glove 모델을 이용하여 문장들을 임베딩 한 뒤, 임베딩 결과로 RANK를 메겨 상위 3개의 문장을 문서의 추출요약으로 선정 
 
-#### STEP1 : OKT 클래스로 토큰화 
+#### STEP1 : 전처리
+![image](https://user-images.githubusercontent.com/75110162/103288451-3dbee500-4a28-11eb-960f-6c1d029167b4.png)
+한글 이외의 corpus 제거 
 
 
 
