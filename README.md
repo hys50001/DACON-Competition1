@@ -15,5 +15,8 @@ CONCEPT: 한국어 Glove 모델을 이용하여 문장들을 임베딩 한 뒤, 
 ![image](https://user-images.githubusercontent.com/75110162/103288527-634bee80-4a28-11eb-85fc-a453fb24ca8b.png)
 한글 이외의 corpus 제거 
 
+#### STEP2 : 토큰화
+![image](https://user-images.githubusercontent.com/75110162/103288595-8a0a2500-4a28-11eb-98e4-02c9f621d33b.png)
+OKT 클래스로 토큰화
 
 
