@@ -11,6 +11,7 @@ article_original 에서 3개의 extractive 문장 선택
 ## 모델1. TextRANK
 CONCEPT: 한국어 Glove 모델을 이용하여 문장들을 임베딩 한 뒤, 임베딩 결과로 RANK를 메겨 상위 3개의 문장을 문서의 추출요약으로 선정 
 
+논문: [Leveraging BERT for Extractive Text Summarization on Lectures](Leveraging BERT for Extractive Text Summarization on Lectures)
 #### STEP1 : 전처리
 ![image](https://user-images.githubusercontent.com/75110162/103288527-634bee80-4a28-11eb-85fc-a453fb24ca8b.png)
 한글 이외의 corpus 제거 
