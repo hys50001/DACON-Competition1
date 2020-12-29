@@ -23,3 +23,11 @@ OKT 클래스로 토큰화
 ![image](https://user-images.githubusercontent.com/75110162/103288741-f1c07000-4a28-11eb-9809-88529cd6a2dc.png)
 외부데이터 한국어 불용어 사전을 이용하여 불용어 제거 
 
+#### STEP3 : 임베딩 
+![image](https://user-images.githubusercontent.com/75110162/103288831-22a0a500-4a29-11eb-8aed-a4df52fa2492.png)
+한국어 버전의 Glove 임베딩 import
+![image](https://user-images.githubusercontent.com/75110162/103288904-495edb80-4a29-11eb-87b4-3913180c5551.png)
+문장에 존재하는 단어들의 임베딩을 합하여 문장벡터를 만듦
+
+
+
