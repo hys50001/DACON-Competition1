@@ -29,5 +29,11 @@ OKT 클래스로 토큰화
 ![image](https://user-images.githubusercontent.com/75110162/103288904-495edb80-4a29-11eb-87b4-3913180c5551.png)
 문장에 존재하는 단어들의 임베딩을 합하여 문장벡터를 만듦
 
+#### SETP4: RANK 
+![image](https://user-images.githubusercontent.com/75110162/103289040-9e9aed00-4a29-11eb-9dff-48e63ffd5857.png)
+
+문서 내의 문장벡터 간의 Cosine Similarity를 구하여 Similariy Matrix를 만든 후, networkx library를 활용하여 문장들 사이의 RANK를 결정
+
+
 
 
