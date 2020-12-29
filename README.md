@@ -46,5 +46,5 @@ OKT 클래스로 토큰화
 - 문장벡터 생성 과정에서 문장 내의 단어들의 임베딩을 단순 합하여 문장 벡터를 만드는 것의 논리성 부족 '
 
 ## 모델2. BERT-Extractive-Summarizer
-CONCEPT: [BERT-Extractive-Summarizer]https://github.com/dmmiller612/bert-extractive-summarizer)
+CONCEPT: BERT-Extractive-Summarizer https://github.com/dmmiller612/bert-extractive-summarizer)
 
