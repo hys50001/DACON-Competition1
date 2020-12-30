@@ -112,8 +112,10 @@ BERT 임베딩 결과에 K-Means Cluster을 적용하여 각 군집의 중심 �
 ```
 #### STEP2 : Summarizer 에 custom model, custom tokenizer 적용
 ```python
-import os
-import natto
+custom_config = AutoConfig.from_pretrained('monologg/kobert')
+custom_config.output_hidden_states=True
+custom_tokenizer = KoBertTokenizer.from_pretrained('monologg/kobert') 
+custom_model = BertModel.from_pretrained('monologg/kobert',config=custom_config)
 from summarizer import Summarizer
 model = Summarizer(custom_model=custom_model, custom_tokenizer=custom_tokenizer)
 ```
