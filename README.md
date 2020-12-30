@@ -107,14 +107,16 @@ BERT 임베딩 결과에 K-Means Cluster을 적용하여 각 군집의 중심 �
 
 #### STEP1 : bert-extractive-summarizer, KoBERT install
 ```python
+!pip install bert-extractive-summarizer
+!pip install transformers==3.5.1
 ```
-![image](https://user-images.githubusercontent.com/75110162/103291284-b88afe80-4a2e-11eb-98cc-8a8389030720.png)
-
 #### STEP2 : Summarizer 에 custom model, custom tokenizer 적용
 ```python
+import os
+import natto
+from summarizer import Summarizer
+model = Summarizer(custom_model=custom_model, custom_tokenizer=custom_tokenizer)
 ```
-![image](https://user-images.githubusercontent.com/75110162/103291407-fd169a00-4a2e-11eb-8812-db963ef34684.png)
-
 이 과정에서 SPACY에 한국어 모델이 없어 Mecab 을 이용.. 이 과정에서 난항을 겪었고 해결하는데 엄청 오래 걸렸다.. 
 
 #### 결과 
