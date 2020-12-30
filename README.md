@@ -11,30 +11,80 @@ article_original 에서 3개의 extractive 문장 선택
 ## 모델1. TextRANK
 CONCEPT: 한국어 Glove 모델을 이용하여 문장들을 임베딩 한 뒤, 임베딩 결과로 RANK를 메겨 상위 3개의 문장을 문서의 추출요약으로 선정 
 
-#### STEP1 : 전처리
-![image](https://user-images.githubusercontent.com/75110162/103288527-634bee80-4a28-11eb-85fc-a453fb24ca8b.png)
-한글 이외의 corpus 제거 
+#### STEP1 : 전처리: 한글 이외의 corpus 제거 
+```python
+for i in test_article:
+    for j,item in enumerate(i):
+        i[j]=re.compile('[^ ㄱ-ㅣ가-힣]+').sub('',item)
+```
 
-#### STEP2-1 : 토큰화
-![image](https://user-images.githubusercontent.com/75110162/103288595-8a0a2500-4a28-11eb-98e4-02c9f621d33b.png)
-OKT 클래스로 토큰화
+#### STEP2-1 : 토큰화 :OKT 클래스 이용
+```python
+from konlpy.tag import Okt
+okt = Okt()
+for item in splited_test:
+    for i,j in enumerate(item):
+        item[i]=okt.morphs(j)
+```
 
-#### STEP2-2 : 불용어 제거 
-![image](https://user-images.githubusercontent.com/75110162/103288741-f1c07000-4a28-11eb-9809-88529cd6a2dc.png)
-외부데이터 한국어 불용어 사전을 이용하여 불용어 제거 
+#### STEP2-2 : 불용어 제거: 외부데이터 한국어 불용어 사전을 이용하여 불용어 제거
+```python
+stop_words=[]
+f = open('한국어불용어100.txt', encoding="utf8")
+for line in f:
+    word_vector = line.split()
+    stop_words.append(word_vector[0])    
+f.close()
 
-#### STEP3 : 임베딩 
-![image](https://user-images.githubusercontent.com/75110162/103288831-22a0a500-4a29-11eb-8aed-a4df52fa2492.png)
-한국어 버전의 Glove 임베딩 import
+for i,item in enumerate(splited_test):
+    for j,k in enumerate(item):
+        splited_test[i][j]=[word for word in k if not word in stop_words]        
+```
+#### STEP3 : 임베딩 한국어 버전의 Glove 활용하여 문장에 존재하는 단어들의 임베딩을 합하여 문장벡터를 만듦
+```python
+import numpy as np
+embedding_dict = dict()
+f = open('glove.txt', encoding="utf8")
 
-![image](https://user-images.githubusercontent.com/75110162/103288904-495edb80-4a29-11eb-87b4-3913180c5551.png)
-문장에 존재하는 단어들의 임베딩을 합하여 문장벡터를 만듦
+for line in f:
+    word_vector = line.split()
+    word = word_vector[0]
+    word_vector_arr = np.asarray(word_vector[1:], dtype='float32') 
+    embedding_dict[word] = word_vector_arr
+f.close()
 
-#### SETP4: RANK 
-![image](https://user-images.githubusercontent.com/75110162/103289040-9e9aed00-4a29-11eb-9dff-48e63ffd5857.png)
+embedding_dim = 100
+zero_vector = np.zeros(embedding_dim)
 
-문서 내의 문장벡터 간의 Cosine Similarity를 구하여 Similariy Matrix를 만든 후, networkx library를 활용하여 문장들 사이의 RANK 결정 
-  - 문장들의 임베딩을 기반으로 인접행렬 구성 후 그래프로 표현, 이 후 그래프의 edge weight를 이용하여 각 문장의 score 결정
+def calculate_sentence_vector(sentence):
+  if len(sentence) != 0:
+    return sum([embedding_dict.get(word, zero_vector) 
+                  for word in sentence])/len(sentence)
+  else:
+    return zero_vector
+```
+
+#### SETP4: RANK
+- 문서 내의 문장벡터 간의 Cosine Similarity를 구하여 Similariy Matrix를 만든 후, networkx library를 활용하여 문장들 사이의 RANK 결정 
+- 문장들의 임베딩을 기반으로 인접행렬 구성 후 그래프로 표현, 이 후 그래프의 edge weight를 이용하여 각 문장의 score 결정
+```python
+from sklearn.metrics.pairwise import cosine_similarity
+import networkx as nx
+import matplotlib.pyplot as plt
+
+def similarity_matrix(sentence_embedding):
+  sim_mat = np.zeros([len(sentence_embedding), len(sentence_embedding)])
+  for i in range(len(sentence_embedding)):
+      for j in range(len(sentence_embedding)):
+        sim_mat[i][j] = cosine_similarity(sentence_embedding[i].reshape(1, 100),
+                                          sentence_embedding[j].reshape(1, 100))[0,0]
+  return sim_mat
+
+def calculate_score(sim_matrix):
+    nx_graph = nx.from_numpy_array(sim_matrix)
+    scores = nx.pagerank(nx_graph)
+    return scores
+```
 
 #### 결과 
 순위권 밖의 좋지 못한 score를 기록
@@ -56,9 +106,13 @@ BERT 임베딩 결과에 K-Means Cluster을 적용하여 각 군집의 중심 �
 ![image](https://user-images.githubusercontent.com/75110162/103290600-5087e880-4a2d-11eb-8def-d4fd8e11b713.png)
 
 #### STEP1 : bert-extractive-summarizer, KoBERT install
+```python
+```
 ![image](https://user-images.githubusercontent.com/75110162/103291284-b88afe80-4a2e-11eb-98cc-8a8389030720.png)
 
 #### STEP2 : Summarizer 에 custom model, custom tokenizer 적용
+```python
+```
 ![image](https://user-images.githubusercontent.com/75110162/103291407-fd169a00-4a2e-11eb-8812-db963ef34684.png)
 
 이 과정에서 SPACY에 한국어 모델이 없어 Mecab 을 이용.. 이 과정에서 난항을 겪었고 해결하는데 엄청 오래 걸렸다.. 
